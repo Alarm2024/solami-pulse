@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>solami-pulse</title>
+  <meta name="description" content="Read-only Solana market pulse on Solami data, with a stream-health panel per RPC provider.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1117'/%3E%3Cpath d='M4 17h6l3-8 5 15 3-7h7' fill='none' stroke='%234cc9f0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>solami-pulse</h1>
+    <span id="mode" class="badge">connecting…</span>
+    <span class="ro">read-only · holds no wallet · signs and sends nothing</span>
+  </header>
+
+  <main>
+    <section aria-labelledby="h-market">
+      <h2 id="h-market">Market <small id="history"></small></h2>
+      <div class="cards" id="cards"></div>
+    </section>
+
+    <section aria-labelledby="h-health">
+      <h2 id="h-health">Stream health <small>measured on receipt, per provider</small></h2>
+      <div class="scroll"><table id="health"><thead><tr>
+        <th>stream</th><th>host</th><th>state</th><th>msg/s</th><th>last msg</th><th>slot</th><th>lag</th>
+        <th title="per slot: ms after the first provider to report it">behind p50/p95</th><th>RPC p50/p95</th>
+        <th>reconnects</th><th title="sampled Blur signatures looked up on chain">verified · missing · slot≠</th><th>last error</th>
+      </tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section aria-labelledby="h-pools">
+      <h2 id="h-pools">Most active pools <small>by 1 h volume</small></h2>
+      <div class="scroll"><table id="pools"><thead><tr>
+        <th>pool</th><th>dex</th><th>5 m vol</th><th>1 h vol</th><th>24 h vol</th><th>1 h trades</th>
+        <th>1 h buy share</th><th>1 h wallets</th><th>1 h liq + / −</th><th>price</th>
+      </tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <div class="two">
+      <section aria-labelledby="h-launches">
+        <h2 id="h-launches">New pools</h2>
+        <ol id="launches" class="feed"></ol>
+      </section>
+      <section aria-labelledby="h-alerts">
+        <h2 id="h-alerts">Alerts <small id="rules"></small></h2>
+        <ol id="alerts" class="feed"></ol>
+      </section>
+    </div>
+
+    <section aria-labelledby="h-frames">
+      <h2 id="h-frames">Frames <small>what Blur sent, and any field we expected but did not get</small></h2>
+      <p id="frames" class="mono"></p>
+    </section>
+  </main>
+
+  <footer>
+    Data: Solami Blur (decoded events), slot streams and read-only RPC on each configured provider.
+    Numbers are computed in this process from what arrives; see the README for how to reproduce them.
+  </footer>
+  <script src="/app.js"></script>
+</body>
+</html>

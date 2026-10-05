@@ -1,0 +1,9 @@
+[
+  { "id": "volume-spike", "scope": "pool", "metric": "volume_5m_usd", "op": ">=", "value": 50000, "cooldown_s": 900 },
+  { "id": "one-sided-buying", "scope": "pool", "metric": "buy_pressure_5m", "op": ">=", "value": 0.85, "min_trades_5m": 25, "cooldown_s": 900 },
+  { "id": "one-sided-selling", "scope": "pool", "metric": "buy_pressure_5m", "op": "<=", "value": 0.15, "min_trades_5m": 25, "cooldown_s": 900 },
+  { "id": "liquidity-pulled", "scope": "pool", "metric": "liq_removed_5m_usd", "op": ">=", "value": 10000, "cooldown_s": 600 },
+  { "id": "new-pool-with-liquidity", "scope": "launch", "metric": "liquidity_usd", "op": ">=", "value": 5000 },
+  { "id": "provider-behind", "scope": "provider", "metric": "slot_lag", "op": ">=", "value": 4, "cooldown_s": 300 },
+  { "id": "stream-silent", "scope": "provider", "metric": "last_msg_age_ms", "op": ">=", "value": 10000, "cooldown_s": 300 }
+]

@@ -1,0 +1,24 @@
+{
+  "name": "solami-pulse",
+  "version": "0.1.0",
+  "description": "Read-only Solana market pulse on Solami data: decoded trades, new pools, liquidity, alert rules and a stream-health panel per RPC provider. Nothing is signed or sent.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "start": "node src/index.ts",
+    "record": "node src/index.ts --record",
+    "replay": "node src/index.ts --replay",
+    "report": "node scripts/report.ts",
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "@types/ws": "^8.18.2",
+    "typescript": "^5.9.2",
+    "ws": "^8.22.0"
+  }
+}
