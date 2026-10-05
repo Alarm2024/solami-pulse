@@ -132,3 +132,5 @@ the Solami data track and the RPC Fast Infrastructure Sidetrack. Side-track priz
 ## License
 
 MIT — see [LICENSE](LICENSE). Made by [elghaly](https://elghaly.dev).
+
+Docs and images: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), © elghaly. Third-party fonts, logos and screenshots of other services keep their own licenses.
